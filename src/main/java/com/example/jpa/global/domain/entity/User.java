@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter @AllArgsConstructor
 @NoArgsConstructor
@@ -21,4 +23,6 @@ public class User {
     private String password;
     @Column(name = "USER_NICKNAME")
     private String nickname;
+    @OneToMany(mappedBy = "user")
+    private List<Playlist> playlists;
 }

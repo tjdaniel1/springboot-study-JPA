@@ -14,10 +14,11 @@ public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
     @Override
     public void save(Map<String, String> map) {
-        User user = new User(
-                null, map.get("username")
-                ,map.get("password"), map.get("nickname")
-        );
+//        User user = new User(
+//                null, map.get("username")
+//                ,map.get("password"), map.get("nickname")
+//        );
+        User user = new User(null, "test", "test","Test",null);
         userRepository.save(user);
     }
 

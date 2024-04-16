@@ -17,7 +17,7 @@ public class Playlist {
     private Long id;
     @Column(name = "PLAYLIST_TITLE", nullable = false)
     private String title;
-    @Column(name = "USER_ID")
+    @JoinColumn(name = "USER_ID")
     @ManyToOne
     private User user;
 }
