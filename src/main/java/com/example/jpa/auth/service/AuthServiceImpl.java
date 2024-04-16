@@ -1,5 +1,6 @@
 package com.example.jpa.auth.service;
 
+import com.example.jpa.auth.dto.response.UserResponse;
 import com.example.jpa.global.domain.entity.User;
 import com.example.jpa.global.domain.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,8 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public List<UserResponse> getAll() {
+
+        return userRepository.findAll().stream().map(UserResponse::from).toList();
     }
 }

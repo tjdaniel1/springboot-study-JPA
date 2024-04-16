@@ -1,6 +1,8 @@
 package com.example.jpa.auth.controller;
 
+import com.example.jpa.auth.dto.response.UserResponse;
 import com.example.jpa.auth.service.AuthService;
+import com.example.jpa.auth.service.AuthServiceImpl;
 import com.example.jpa.global.domain.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +20,7 @@ import java.util.Map;
 public class AuthController {
     private final AuthService authService;
     @GetMapping
-    public List<User> getAll(){
+    public List<UserResponse> getAll(){
         return authService.getAll();
     }
     @PostMapping
