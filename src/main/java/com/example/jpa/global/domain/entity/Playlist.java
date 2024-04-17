@@ -18,6 +18,6 @@ public class Playlist {
     @Column(name = "PLAYLIST_TITLE", nullable = false)
     private String title;
     @JoinColumn(name = "USER_ID")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 }

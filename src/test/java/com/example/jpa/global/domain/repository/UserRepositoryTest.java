@@ -3,7 +3,6 @@ package com.example.jpa.global.domain.repository;
 import com.example.jpa.InitData;
 import com.example.jpa.global.domain.entity.Playlist;
 import com.example.jpa.global.domain.entity.User;
-import com.example.jpa.playlist.service.PlaylistService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,22 +14,27 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
-@Transactional
-class PlaylistRepositoryTest extends InitData {
-
+class UserRepositoryTest extends InitData {
 
     @Test
-    void findByTitle() {
+    void findByUsername() {
         //given
-        String title = "title3";
+        String username = "user1";
         //when
-        List<Playlist> byTitle = playlistRepository.findByTitle(title);
-
+        List<User> byUserName = userRepository.findByUsername(username);
         //then
-        //리스트의 길이는 1이다
-        Assertions.assertEquals(1, byTitle.size());
+        Assertions.assertEquals(1, byUserName.size());
 
-        Assertions.assertEquals("user3", byTitle.get(0).getUser().getUsername());
+    }
+
+    @Test
+    void findByNicknameContainingOrderByIdDesc() {
+        //given
+        String username = "user";
+        //when
+        List<User> users = userRepository.findByNicknameContainingOrderByIdDesc(username);
+        //then
+        Assertions.assertEquals(10,users.size());
+        Assertions.assertEquals("user9", users.get(0).getNickname());
     }
 }

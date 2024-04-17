@@ -23,6 +23,6 @@ public class User {
     private String password;
     @Column(name = "USER_NICKNAME")
     private String nickname;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Playlist> playlists;
 }
