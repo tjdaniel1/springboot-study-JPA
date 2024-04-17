@@ -3,6 +3,7 @@ package com.example.jpa.song.service;
 import com.example.jpa.global.domain.entity.Song;
 import com.example.jpa.global.domain.repository.SongRepository;
 import com.example.jpa.song.dto.request.SongRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +27,24 @@ public class SongServiceImpl implements SongService{
     }
 
     @Override
+    @Transactional
     public Song getById(Long id) {
         Optional<Song> byId = songRepository.findById(id);
-        return byId.orElse(new Song());
+        Song song = byId.orElse(new Song());return song;
 //        if(byId.isEmpty()) return null;
 //        return byId.get();
+    }
+
+    @Override
+    @Transactional
+    public Song update(SongRequest req, Long id) {
+//        Optional<Song> byId = songRepository.findById(id);
+//        if(byId.isEmpty()) throw new IllegalArgumentException();
+//        Song song = byId.get();
+        Song song = songRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        song.setTitle(req.title());
+        song.setLyrics(req.lyrics());
+
+        return null;
     }
 }

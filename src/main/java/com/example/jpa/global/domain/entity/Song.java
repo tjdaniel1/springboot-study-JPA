@@ -25,4 +25,12 @@ public class Song {
     private String lyrics;
     @Column(name = "SONG_CREATED_AT")
     private LocalDateTime createdAt;
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setLyrics(String lyrics) {
+        this.lyrics = lyrics;
+    }
 }
