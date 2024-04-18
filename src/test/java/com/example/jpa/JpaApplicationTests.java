@@ -39,4 +39,21 @@ class JpaApplicationTests extends InitData{
 		}
 	}
 
+	@Test
+	void joinTest(){
+		//given
+		List<Playlist> allWithUsers = playlistRepository.findAllWithUsers("1");
+		allWithUsers.forEach(
+				playlist -> {
+					System.out.println(playlist.getTitle());
+					System.out.println(playlist.getId());
+					System.out.println(playlist.getUser().getUsername());
+				}
+		);
+		//when
+
+		//then
+
+	}
+
 }
